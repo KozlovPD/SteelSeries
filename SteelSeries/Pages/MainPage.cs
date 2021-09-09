@@ -19,12 +19,6 @@ namespace SteelSeries.Pages
         private IWebElement MiceButton => Browser.GetElement(By.XPath("//button[contains(text(), 'Mice')]"));
         private IWebElement WirelessMiceButton => Browser.GetElement(By.XPath("//ul[contains(@class, 'dropdown')]/li/a[@href= '/gaming-mice/wireless']"));
         private IWebElement LoggedInNavBar => Browser.GetElement(By.XPath("//li[contains(@class, 'logged-in')]"));
-
-        internal void verifyUserIsLoggedIn()
-        {
-            Assert.IsTrue(LoggedInNavBar.Displayed);
-        }
-
         private IWebElement MousepadsButton => Browser.GetElement(By.XPath("//li[@class = 'category-navigation__item']/a[contains(text(), 'Mousepads')]"));
         private IWebElement HeadsetsButton => Browser.GetElement(By.XPath("//button[contains(text(), 'Headsets')]"));
         private IWebElement PcHeadsetsButton => Browser.GetElement(By.XPath("//ul[contains(@class, 'dropdown')]/li/a[@href= '/gaming-headsets/pc']"));
@@ -33,6 +27,11 @@ namespace SteelSeries.Pages
 
         public MainPage(Browser browser) : base(browser)
         {
+        }
+
+        public void verifyUserIsLoggedIn()
+        {
+            Assert.IsTrue(LoggedInNavBar.Displayed);
         }
 
         public void SignUpButtonClick()

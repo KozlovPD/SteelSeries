@@ -72,15 +72,6 @@ namespace WD
             };
         }
 
-        //Func<IWebDriver, bool> ElementExists(IWebElement element)
-        //{
-        //    return Driver =>
-        //    {
-        //        return WaitHelper.WaitFor(
-        //            () => element != null);
-        //    };
-        //}
-
         public bool CheckIfElementExists(By byElement)
         {
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
@@ -284,7 +275,6 @@ namespace WD
                 options.AddUserProfilePreference("plugins.always_open_pdf_externally", true);
                 options.AddUserProfilePreference("download.default_directory", "C:");
                 options.AddUserProfilePreference("safebrowsing.enabled", true);
-                //options.AddUserProfilePreference("--user-data-dir", "C:\\chrome_insecure");
                 return new ChromeDriver(options);
                 }
             }
