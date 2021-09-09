@@ -8,7 +8,7 @@ namespace SteelSeries.Tests
     {
 
         [TestCase]
-        public void signUpTest() 
+        public void signUpTest()
         {
             var randomGenerator = new GenerationHelper();
             var mainPage = new MainPage(Browser);

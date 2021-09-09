@@ -5,10 +5,10 @@ using Utils;
 namespace SteelSeries.Tests
 {
     class DownloadTest : BaseTest
-    { 
+    {
 
         [TestCase]
-        public void downloadTest() 
+        public void downloadTest()
         {
             var mainPage = new MainPage(Browser);
             var enginePage = new EnginePage(Browser);
@@ -20,7 +20,7 @@ namespace SteelSeries.Tests
             mainPage.EngineButtonClick();
             enginePage.WindowsDownloadButtonClick();
             chromeDownloadsPage.NavigateToDownloadsPage();
-             var FileName = chromeDownloadsPage.GetFileTitleAndWaitForLoadIsDone();
+            var FileName = chromeDownloadsPage.GetFileTitleAndWaitForLoadIsDone();
             Assert.IsTrue(fileHelper.CheckFileDownloaded(FileName));
             fileHelper.DeleteFileIfExists(FileName);
         }

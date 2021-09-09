@@ -12,15 +12,10 @@ namespace SteelSeries.Pages
         protected BasePage(Browser browser)
         {
             Browser = browser;
-        }        
-
-        public BasePage()
-        {
-
         }
 
         protected void OpenPage(String url)
-        {         
+        {
             Browser.Go(url);
         }
     }

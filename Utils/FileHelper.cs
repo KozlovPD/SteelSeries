@@ -12,7 +12,7 @@ namespace Utils
         {
             bool exist = false;
             string Path = Environment.GetEnvironmentVariable("USERPROFILE") + "\\Downloads";
-            var a = Path + "\\" +filename;
+            var a = Path + "\\" + filename;
             exist = File.Exists(a);
             WaitHelper.WaitFor(() => exist = true);
             return exist;

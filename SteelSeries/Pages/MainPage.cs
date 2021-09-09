@@ -11,7 +11,7 @@ namespace SteelSeries.Pages
 {
     class MainPage : BasePage
     {
-        
+
         private IWebElement DiscountButton => Browser.GetElement(By.XPath("//button[text() = 'Subscribe']"));
         private IWebElement DiscountPopUpCloseButton => Browser.GetElement(By.XPath("//div[@class = 'sc-close']"));
         private IWebElement SoftwareButton => Browser.GetElement(By.XPath("//li[contains(@class, 'category')]/button[contains(text(), 'Software')]"));
@@ -64,9 +64,9 @@ namespace SteelSeries.Pages
 
         public void closeDiscountPopUp()
         {
-            Browser.WaitForElementToBeDisplayed(DiscountButton,120);
-                Browser.MoveToElement(DiscountButton);
-                Browser.Click(DiscountPopUpCloseButton);
+            Browser.WaitForElementToBeDisplayed(DiscountButton, 120);
+            Browser.MoveToElement(DiscountButton);
+            Browser.Click(DiscountPopUpCloseButton);
         }
 
 
@@ -75,9 +75,9 @@ namespace SteelSeries.Pages
             OpenPage("https://steelseries.com");
         }
 
-        public void miceBtnClick() 
+        public void miceBtnClick()
         {
-            Browser.WaitForElementToBeEnabled(MiceButton,5);
+            Browser.WaitForElementToBeEnabled(MiceButton, 5);
             Browser.Click(MiceButton);
         }
 
@@ -96,7 +96,7 @@ namespace SteelSeries.Pages
 
         public void wirelessMiceBtnClick()
         {
-            Browser.WaitForElementToBeEnabled(WirelessMiceButton,10);
+            Browser.WaitForElementToBeEnabled(WirelessMiceButton, 10);
             Browser.Click(WirelessMiceButton);
         }
     }

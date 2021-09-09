@@ -7,9 +7,9 @@ namespace Utils
 {
     public class WaitHelper
     {
-    public static bool WaitFor(
-    Func<bool> condition,
-    int timeout = 5)
+        public static bool WaitFor(
+        Func<bool> condition,
+        int timeout = 5)
         {
             var watch = new Stopwatch();
             bool result = false;

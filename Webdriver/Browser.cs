@@ -132,12 +132,6 @@ namespace WD
             }
         }
 
-        //public void WaitElementToExist(IWebElement element, int duration)
-        //{
-        //    WebDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(duration));
-        //    WebDriverWait.Until(ElementExists(element));
-        //}
-
         public void WaitForElementToBeEnabled(IWebElement element, int duration)
         {
             WebDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(duration));
@@ -151,12 +145,7 @@ namespace WD
             wait.Until(driver1 => ((IJavaScriptExecutor)Driver).ExecuteScript("return document.readyState").Equals("complete"));
         }
 
-            /// <summary>
-            /// Waiter for current browser URL to contain some pattern
-            /// </summary>
-            /// <param name="urlFragment">Pattern that we want to wait URL to contain</param>
-            /// <param name="duration">Duration in seconds to wait for</param>
-            public void WaitForUrlToContain(string urlFragment, int duration = 10)
+        public void WaitForUrlToContain(string urlFragment, int duration = 10)
         {
             WebDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(duration));
             WebDriverWait.Until(UrlContains(urlFragment));
@@ -167,7 +156,7 @@ namespace WD
 
         public bool GetAttributeOfShadowElement(string script)
         {
-            bool root =(bool)((IJavaScriptExecutor)Driver).ExecuteScript(script);
+            bool root = (bool)((IJavaScriptExecutor)Driver).ExecuteScript(script);
             return root;
         }
 
@@ -181,7 +170,7 @@ namespace WD
             Actions actions = new Actions(Driver);
             actions?.MoveToElement(element).Build().Perform();
         }
-        public void SwitchToFrame(IWebElement element) 
+        public void SwitchToFrame(IWebElement element)
         {
             Driver.SwitchTo().Frame(element);
         }
@@ -238,7 +227,7 @@ namespace WD
             ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
 
-        public void CreateNewTab() 
+        public void CreateNewTab()
         {
             ((IJavaScriptExecutor)Driver).ExecuteScript("window.open();");
             Driver.SwitchTo().Window(Driver.WindowHandles.Last());
@@ -276,7 +265,7 @@ namespace WD
                 options.AddUserProfilePreference("download.default_directory", "C:");
                 options.AddUserProfilePreference("safebrowsing.enabled", true);
                 return new ChromeDriver(options);
-                }
             }
         }
     }
+}

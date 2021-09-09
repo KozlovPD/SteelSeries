@@ -10,7 +10,8 @@ namespace SteelSeries.Tests
     {
 
         [TestCase("QcK Prism Cloth", "xl")]
-        public void tooltipTest(string product, string extraInfo) {
+        public void tooltipTest(string product, string extraInfo)
+        {
             var mainPage = new MainPage(Browser);
             var productPage = new ProductPage(Browser);
 

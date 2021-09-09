@@ -9,7 +9,7 @@ namespace SteelSeries.Tests
     {
         [Retry(1)]
         [TestCase("Rival 650 Wireless")]
-        public void sortingTest(String product) 
+        public void sortingTest(String product)
         {
             var mainPage = new MainPage(Browser);
             var productPage = new ProductPage(Browser);

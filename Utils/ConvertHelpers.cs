@@ -8,7 +8,7 @@ namespace Utils
 {
     public class ConvertHelpers
     {
-        public List<decimal> ParsePricesToDecimal(List<IWebElement> list) 
+        public List<decimal> ParsePricesToDecimal(List<IWebElement> list)
         {
             NumberStyles style;
             CultureInfo culture;
@@ -27,6 +27,6 @@ namespace Utils
                 pricesList.Add(number);
             }
             return pricesList;
-        } 
+        }
     }
 }

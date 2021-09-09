@@ -8,7 +8,7 @@ namespace SteelSeries.Pages
 {
     class SignUpPage : BasePage
     {
-        
+
         private IWebElement EmailInput => Browser.GetElement(By.XPath("//form[@id='registration-form']//input[@name='email']"));
         private IWebElement PasswordInput => Browser.GetElement(By.XPath("//form[@id='registration-form']//input[@name='password1']"));
         private IWebElement ConfirmPasswordInput => Browser.GetElement(By.XPath("//form[@id='registration-form']//input[@name='password2']"));

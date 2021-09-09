@@ -15,7 +15,7 @@ namespace SteelSeries.Pages
         {
         }
 
-        public void WindowsDownloadButtonClick() 
+        public void WindowsDownloadButtonClick()
         {
             Browser.Click(WindowsDownloadButton);
         }

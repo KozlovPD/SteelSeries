@@ -29,7 +29,7 @@ namespace SteelSeries.Pages
         private IWebElement FingertipCheckbox => Browser.GetElement(By.XPath("//span[text() = 'Fingertip']"));
         private IWebElement WirelessFilterCrossButton => Browser.GetElement(By.XPath("//a[contains(text(), 'Wireless')]/span"));
         private IWebElement XLPreviewIcon => Browser.GetElement(By.XPath("//div[@class = 'tooltip__inner' and text() ='XL']/ancestor::div[@aria-hidden='false']"));
-        private IWebElement ExactProduct (string productName, string extraInfo) => Browser.GetElement(By.XPath($"//div[contains(@class, 'product__name') and contains (text(), '{productName}')]/ancestor::a[contains(@href, '={extraInfo}')]"));
+        private IWebElement ExactProduct(string productName, string extraInfo) => Browser.GetElement(By.XPath($"//div[contains(@class, 'product__name') and contains (text(), '{productName}')]/ancestor::a[contains(@href, '={extraInfo}')]"));
         private List<IWebElement> ExactProductRelatedImages(string productName, string extraInfo) => Browser.GetElements(By.XPath($"//div[contains(@class, 'product__name') and contains (text(), '{productName}')]/ancestor::a[contains(@href, 'size={extraInfo}')]/following-sibling::div[1]//li"));
         private IWebElement ArrowButton => Browser.GetElement(By.XPath("//button[@class='glide__arrow glide__arrow--right']"));
 
@@ -39,14 +39,14 @@ namespace SteelSeries.Pages
         }
         public void FindXLPreviewIcon(string productName, string extraInfo)
         {
-                while (!Browser.CheckIfElementExists(By.XPath("//div[@class = 'tooltip__inner' and text() ='XL']/ancestor::div[@aria-hidden='false']")))
+            while (!Browser.CheckIfElementExists(By.XPath("//div[@class = 'tooltip__inner' and text() ='XL']/ancestor::div[@aria-hidden='false']")))
+            {
+                foreach (IWebElement element in ExactProductRelatedImages(productName, extraInfo))
                 {
-                    foreach (IWebElement element in ExactProductRelatedImages(productName, extraInfo))
-                    {
                     WaitHelper.WaitFor(() => element.Displayed, 3);
-                        Browser.MoveToElement(element);
-                    }
+                    Browser.MoveToElement(element);
                 }
+            }
             Assert.IsTrue(XLPreviewIcon.Displayed);
         }
 
@@ -75,7 +75,7 @@ namespace SteelSeries.Pages
             Browser.Click(FingertipCheckbox);
         }
 
-        public void LowToHighSortButtonClick() 
+        public void LowToHighSortButtonClick()
         {
             Browser.Click(LowToHighSortButton);
         }
