@@ -5,7 +5,7 @@ using WD;
 
 namespace SteelSeries.Pages
 {
-    public class ItemPage : BasePage
+    public class OpenedItemPage : BasePage
     {
         private IWebElement PlayVideoButton => Browser.GetElement(By.XPath("//button[contains(@class, 'ytp-play-button')]"));
         private IWebElement WatchProdcuctFilmButton => Browser.GetElement(By.XPath("//a[contains(text(), 'Watch product film')]"));
@@ -13,7 +13,7 @@ namespace SteelSeries.Pages
         private IWebElement YoutubeVideo => Browser.GetElement(By.XPath("//div[@class = 'html5-video-container']/video"));
         private IWebElement YoutubeVideoInPlayingMode => Browser.GetElement(By.XPath("//div[contains(@class, 'playing-mode')]//video"));
 
-        public ItemPage(Browser browser) : base(browser)
+        public OpenedItemPage(Browser browser) : base(browser)
         {
         }
 
@@ -21,11 +21,16 @@ namespace SteelSeries.Pages
         {
             Browser.Click(WatchProdcuctFilmButton);
         }
-        public void PlayAndVerifyVideo()
+        public void PlayYoutubeVideo()
         {
             Browser.SwitchToFrame(YoutubeFrame);
             Browser.Click(PlayVideoButton);
-            Assert.IsTrue(YoutubeVideoInPlayingMode.Displayed);
         }
+
+        public IWebElement getYoutubeVideoInPlayingMode()
+        {
+            return YoutubeVideoInPlayingMode;
+        }
+
     }
 }

@@ -22,7 +22,7 @@ namespace SteelSeries.Tests
             signUpPage.fillConfirmPasswordField(password);
             signUpPage.acceptPrivacyCheckBoxClick();
             signUpPage.createAccountButtonClick();
-            mainPage.verifyUserIsLoggedIn();
+            Assert.IsTrue(mainPage.getLoggedInNavBar().Displayed);
 
 
 

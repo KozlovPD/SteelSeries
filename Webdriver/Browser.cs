@@ -210,7 +210,10 @@ namespace WD
             return value;
         }
 
-        public void Click(IWebElement element) => element?.Click();
+        public void Click(IWebElement element) {
+            WaitForElementToBeEnabled(element, 5);
+            element?.Click(); 
+        }
         public void Type(IWebElement element, string inputText)
         {
             element?.Clear();

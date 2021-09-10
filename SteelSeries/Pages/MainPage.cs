@@ -29,9 +29,9 @@ namespace SteelSeries.Pages
         {
         }
 
-        public void verifyUserIsLoggedIn()
+        public IWebElement getLoggedInNavBar()
         {
-            Assert.IsTrue(LoggedInNavBar.Displayed);
+            return LoggedInNavBar;
         }
 
         public void SignUpButtonClick()

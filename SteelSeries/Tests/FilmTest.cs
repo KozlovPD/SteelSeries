@@ -14,15 +14,16 @@ namespace SteelSeries.Tests
         {
             var mainPage = new MainPage(Browser);
             var productPage = new ProductPage(Browser);
-            var itemPage = new ItemPage(Browser);
+            var openedItemPage = new OpenedItemPage(Browser);
 
             mainPage.OpenMainPage();
             mainPage.closeDiscountPopUp();
             mainPage.HeadsetsButtonClick();
             mainPage.PcHeadsetsButtonClick();
             productPage.OpenProduct(product, extraInfo);
-            itemPage.WatchProductFilmButtonClick();
-            itemPage.PlayAndVerifyVideo();
+            openedItemPage.WatchProductFilmButtonClick();
+            openedItemPage.PlayYoutubeVideo();
+            Assert.IsTrue(openedItemPage.getYoutubeVideoInPlayingMode().Displayed);
         }
     }
 }

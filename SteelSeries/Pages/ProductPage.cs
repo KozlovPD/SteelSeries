@@ -23,8 +23,6 @@ namespace SteelSeries.Pages
         private IWebElement SortButton => Browser.GetElement(By.XPath("//select[@name = 'sort']"));
         private IWebElement LowToHighSortButton => Browser.GetElement(By.XPath("//select[@name = 'sort']/option[@value='price-low-to-high']"));
         private List<IWebElement> ProductsPricesList => Browser.GetElements(By.XPath("//span[contains(@class, 'current-price')]"));
-
-
         private List<IWebElement> ProductsList => Browser.GetElements(By.XPath("//div[contains(@class, 'product__name') and not(contains(@class,'smurf'))]"));
         private IWebElement FingertipCheckbox => Browser.GetElement(By.XPath("//span[text() = 'Fingertip']"));
         private IWebElement WirelessFilterCrossButton => Browser.GetElement(By.XPath("//a[contains(text(), 'Wireless')]/span"));
@@ -47,7 +45,12 @@ namespace SteelSeries.Pages
                     Browser.MoveToElement(element);
                 }
             }
-            Assert.IsTrue(XLPreviewIcon.Displayed);
+        }
+
+        public IWebElement GetXLPreviewIcon()
+        {
+            return XLPreviewIcon;
+
         }
 
         public void HoverProduct(string productName, string extraInfo)
@@ -55,14 +58,9 @@ namespace SteelSeries.Pages
             Browser.MoveToElement(ExactProduct(productName, extraInfo));
         }
 
-        public void VerifyLabelIsLowToHigh()
+        public IWebElement getLowToHighSortButton()
         {
-            Assert.IsTrue(LowToHighSortButton.Selected);
-        }
-
-        public void VerifyProductsAmountIsIncreaced(int initProductAmount)
-        {
-            Assert.IsTrue(initProductAmount < getProductsAmount());
+            return LowToHighSortButton;
         }
 
         public void WirelessFilterCrossButtonClick()
@@ -78,16 +76,17 @@ namespace SteelSeries.Pages
         public void LowToHighSortButtonClick()
         {
             Browser.Click(LowToHighSortButton);
+            Browser.WaitForUrlToContain("sort=price-low-to-high");
         }
 
-        public void VerifyProductsAreSortedLowToHigh()
+
+        public Tuple<List<decimal>, List<decimal>> getCurrentAndSortedPrices()
         {
             var helpers = new ConvertHelpers();
-            Thread.Sleep(1000);
             List<decimal> PricesList = helpers.ParsePricesToDecimal(ProductsPricesList);
             List<decimal> PricesListForSorting = new List<decimal>(PricesList);
             PricesListForSorting.Sort();
-            Assert.AreEqual(PricesList, PricesListForSorting);
+            return new Tuple<List<decimal>, List<decimal>>(PricesList, PricesListForSorting);
         }
 
         public int getProductsAmount()
@@ -95,9 +94,9 @@ namespace SteelSeries.Pages
             return ProductsList.Count;
         }
 
-        public void VerifyProductIsNotDisplayed(string product)
+        public bool VerifyProductIsNotDisplayed(string product)
         {
-            Assert.IsFalse(Browser.CheckIfElementExists(By.XPath($"//div[contains(@class, 'product__name') and contains(text(), '{product}')]")));
+            return Browser.CheckIfElementExists(By.XPath($"//div[contains(@class, 'product__name') and contains(text(), '{product}')]"));
         }
 
         public void SortButtonClick()

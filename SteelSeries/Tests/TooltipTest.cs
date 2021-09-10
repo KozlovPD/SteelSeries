@@ -20,6 +20,7 @@ namespace SteelSeries.Tests
             mainPage.MousepadsBtnClick();
             productPage.HoverProduct(product, extraInfo);
             productPage.FindXLPreviewIcon(product, extraInfo);
+            Assert.IsTrue(productPage.GetXLPreviewIcon().Displayed);
         }
     }
 }

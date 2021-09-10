@@ -7,7 +7,6 @@ namespace SteelSeries.Tests
     [TestFixture]
     class SortingTest : BaseTest
     {
-        [Retry(1)]
         [TestCase("Rival 650 Wireless")]
         public void sortingTest(String product)
         {
@@ -20,15 +19,15 @@ namespace SteelSeries.Tests
             mainPage.miceBtnClick();
             mainPage.wirelessMiceBtnClick();
             productPage.FingertipCheckBoxClick();
-            productPage.VerifyProductIsNotDisplayed(product);
+            Assert.IsFalse(productPage.VerifyProductIsNotDisplayed(product));
             int initProductAmount = productPage.getProductsAmount();
             productPage.SortButtonClick();
             productPage.LowToHighSortButtonClick();
-            productPage.VerifyProductsAreSortedLowToHigh();
+            Assert.AreEqual(productPage.getCurrentAndSortedPrices().Item1, productPage.getCurrentAndSortedPrices().Item2);
             productPage.WirelessFilterCrossButtonClick();
-            productPage.VerifyProductsAmountIsIncreaced(initProductAmount);
-            productPage.VerifyProductsAreSortedLowToHigh();
-            productPage.VerifyLabelIsLowToHigh();
+            Assert.IsTrue(initProductAmount < productPage.getProductsAmount());
+            Assert.AreEqual(productPage.getCurrentAndSortedPrices().Item1, productPage.getCurrentAndSortedPrices().Item2);
+            Assert.IsTrue(productPage.getLowToHighSortButton().Selected);
         }
     }
 }
