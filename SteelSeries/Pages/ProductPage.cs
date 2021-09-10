@@ -1,11 +1,6 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
 using Utils;
 using WD;
 
@@ -17,8 +12,6 @@ namespace SteelSeries.Pages
         public ProductPage(Browser browser) : base(browser)
         {
         }
-
-
 
         private IWebElement SortButton => Browser.GetElement(By.XPath("//select[@name = 'sort']"));
         private IWebElement LowToHighSortButton => Browser.GetElement(By.XPath("//select[@name = 'sort']/option[@value='price-low-to-high']"));
@@ -41,7 +34,7 @@ namespace SteelSeries.Pages
             {
                 foreach (IWebElement element in ExactProductRelatedImages(productName, extraInfo))
                 {
-                    WaitHelper.WaitFor(() => element.Displayed, 3);
+                    WaitHelper.WaitFor(() => element.Displayed, 4);
                     Browser.MoveToElement(element);
                 }
             }

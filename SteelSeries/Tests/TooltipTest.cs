@@ -1,15 +1,13 @@
-﻿using NUnit.Framework;
+﻿using DataHelpers;
+using NUnit.Framework;
 using SteelSeries.Pages;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SteelSeries.Tests
 {
     class TooltipTest : BaseTest
     {
 
-        [TestCase("QcK Prism Cloth", "xl")]
+        [Test, TestCaseSource(typeof(DataProvider), nameof(DataProvider.QckPrismCloth))]
         public void tooltipTest(string product, string extraInfo)
         {
             var mainPage = new MainPage(Browser);

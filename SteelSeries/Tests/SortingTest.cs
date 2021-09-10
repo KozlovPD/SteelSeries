@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using DataHelpers;
+using NUnit.Framework;
 using SteelSeries.Pages;
 using System;
 
@@ -7,7 +8,7 @@ namespace SteelSeries.Tests
     [TestFixture]
     class SortingTest : BaseTest
     {
-        [TestCase("Rival 650 Wireless")]
+        [Test, TestCaseSource(typeof(DataProvider), nameof(DataProvider.Rival650Wireless))]
         public void sortingTest(String product)
         {
             var mainPage = new MainPage(Browser);

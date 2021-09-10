@@ -7,7 +7,7 @@ namespace SteelSeries.Tests
     class SignUpTest : BaseTest
     {
 
-        [TestCase]
+        [Test]
         public void signUpTest()
         {
             var randomGenerator = new GenerationHelper();
@@ -23,9 +23,6 @@ namespace SteelSeries.Tests
             signUpPage.acceptPrivacyCheckBoxClick();
             signUpPage.createAccountButtonClick();
             Assert.IsTrue(mainPage.getLoggedInNavBar().Displayed);
-
-
-
         }
     }
 }

@@ -1,15 +1,13 @@
-﻿using NUnit.Framework;
+﻿using DataHelpers;
+using NUnit.Framework;
 using SteelSeries.Pages;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SteelSeries.Tests
 {
     class FilmTest : BaseTest
     {
 
-        [TestCase("Arctis Pro Wireless", "white")]
+        [Test, TestCaseSource(typeof(DataProvider), nameof(DataProvider.ArcticProWireless))]
         public void filmTest(string product, string extraInfo)
         {
             var mainPage = new MainPage(Browser);

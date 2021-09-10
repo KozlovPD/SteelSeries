@@ -1,9 +1,4 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using Utils;
+﻿using Utils;
 using WD;
 
 namespace SteelSeries.Pages

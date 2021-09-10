@@ -8,7 +8,7 @@ namespace SteelSeries.Tests
     {
         string FileName;
         FileHelper fileHelper = new FileHelper();
-        [TestCase]
+        [Test]
         public void downloadTest()
         {
             var mainPage = new MainPage(Browser);
