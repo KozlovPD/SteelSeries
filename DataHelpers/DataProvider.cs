@@ -6,7 +6,7 @@ namespace DataHelpers
     public class DataProvider
     {
         //TODO reimplement to extract data from JSON or any other file 
-        public static IEnumerable<TestCaseData> Rival650Wireless
+        public static IEnumerable<TestCaseData> SortingTest
         {
             get
             {
@@ -14,7 +14,7 @@ namespace DataHelpers
             }
         }
 
-        public static IEnumerable<TestCaseData> ArcticProWireless
+        public static IEnumerable<TestCaseData> FilmTest
         {
             get
             {
@@ -22,7 +22,7 @@ namespace DataHelpers
             }
         }
 
-        public static IEnumerable<TestCaseData> QckPrismCloth
+        public static IEnumerable<TestCaseData> TooltipTest
         {
             get
             {

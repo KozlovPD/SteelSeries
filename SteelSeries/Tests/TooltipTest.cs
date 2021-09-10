@@ -7,7 +7,7 @@ namespace SteelSeries.Tests
     class TooltipTest : BaseTest
     {
 
-        [Test, TestCaseSource(typeof(DataProvider), nameof(DataProvider.QckPrismCloth))]
+        [Test, TestCaseSource(typeof(DataProvider), nameof(DataProvider.TooltipTest))]
         public void tooltipTest(string product, string extraInfo)
         {
             var mainPage = new MainPage(Browser);

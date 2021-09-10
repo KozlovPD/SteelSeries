@@ -8,7 +8,7 @@ namespace SteelSeries.Tests
     [TestFixture]
     class SortingTest : BaseTest
     {
-        [Test, TestCaseSource(typeof(DataProvider), nameof(DataProvider.Rival650Wireless))]
+        [Test, TestCaseSource(typeof(DataProvider), nameof(DataProvider.SortingTest))]
         public void sortingTest(String product)
         {
             var mainPage = new MainPage(Browser);

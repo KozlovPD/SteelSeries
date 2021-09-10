@@ -7,7 +7,7 @@ namespace SteelSeries.Tests
     class FilmTest : BaseTest
     {
 
-        [Test, TestCaseSource(typeof(DataProvider), nameof(DataProvider.ArcticProWireless))]
+        [Test, TestCaseSource(typeof(DataProvider), nameof(DataProvider.FilmTest))]
         public void filmTest(string product, string extraInfo)
         {
             var mainPage = new MainPage(Browser);

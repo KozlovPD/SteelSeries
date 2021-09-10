@@ -40,7 +40,5 @@ namespace SteelSeries.Pages
         {
             Browser.Click(CreateAccountButton);
         }
-
-
     }
 }
